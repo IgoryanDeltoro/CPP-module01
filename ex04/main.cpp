@@ -12,11 +12,11 @@ int main (int ac, char **str)
 
     if (s.setFileName(str[1]))
         return 1;
-    if (s.setReplacingStr(str[2]))
+    if (s.setReplacingString(str[2]))
         return 1;
-    if (s.setInsertString(str[3]))
+    if (s.setInsertingString(str[3]))
         return 1;
     if (s.replacePartContentByString())
         return 1;
-    std::cout << s.getFileContents() << "\n";
+    return 0;
 }

@@ -10,18 +10,14 @@ private:
     std::string filename;
     std::string replacingStr;
     std::string insertStr;
-    std::string fileContents;
-
 
 public:
     StrReplacer();
     ~StrReplacer();
 
     int setFileName(const std::string &fn);
-    int setReplacingStr(const std::string &rs);
-    int setInsertString(const std::string &is);
-
-    std::string getFileContents();
+    int setReplacingString(const std::string &rs);
+    int setInsertingString(const std::string &is);
     int replacePartContentByString();
 };
 
