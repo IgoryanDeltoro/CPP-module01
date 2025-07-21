@@ -3,39 +3,59 @@
 StrReplacer::StrReplacer() {};
 StrReplacer::~StrReplacer() {};
 
-void StrReplacer::setFileContents(std::string fn) {
-    this->fileContents = fn;
+// setters 
+int StrReplacer::setFileName(const std::string &fn)
+{
+    if (!fn.length())
+    {
+        std::cout << "Error: an input string is empty\n";
+        return 1;
+    }
+    filename = fn;
+    return 0;
 }
+int StrReplacer::setReplacingStr(const std::string &rs) {
+    if (!rs.length())
+    {
+        std::cout << "Error: an input string is empty\n";
+        return 1;
+    }
+    replacingStr = rs;
+    return 0;
+}
+int StrReplacer::setInsertString(const std::string &is) {
+    if (!is.length())
+    {
+        std::cout << "Error: an input string is empty\n";
+        return 1;
+    }
+    insertStr = is;
+    return 0;
+}
+
 std::string StrReplacer::getFileContents() {
     return fileContents;
 }
-int StrReplacer::readFile(char *fn)
-{
-    std::ifstream inFile(fn);
-    if (!inFile)
+int StrReplacer::replacePartContentByString() {
+    if (filename.length())
     {
-        std::cout << "Error: cannot open input file\n";
-        return -1;
-    }
-    std::string c((std::istreambuf_iterator<char>(inFile)),
-                  std::istreambuf_iterator<char>());
-    setFileContents(c);
-    inFile.close();
-    return static_cast<int>(fileContents.length());
-}
+        std::fstream inFile(filename.c_str());
+        if (!inFile)
+        {
+            std::cout << "Error: cannot open input file\n";
+            return 1;
+        }
 
-void StrReplacer::replacePartContentByString(std::string str, std::string insert)
-{
-    if (!str.length() || !insert.length())
-    {
-        std::cout << "Error: one of argument is empty\n";
-        return;
+        std::string word;
+        fileContents.clear();
+        while (inFile >> word)
+        {
+            if (word.compare(replacingStr))
+                fileContents += word + ' ';
+            else
+                fileContents += insertStr + ' ';
+        }
+        inFile.close();
     }
-
-    size_t start = 0;
-    while ((start = fileContents.find(str, start)) != std::string::npos)
-    {
-        fileContents.replace(start, str.length(), insert);
-        start += insert.length();
-    }
+    return 0;
 }

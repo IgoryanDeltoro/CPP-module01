@@ -10,7 +10,13 @@ int main (int ac, char **str)
 
     StrReplacer s;
 
-    s.readFile(str[1]);
-    s.replacePartContentByString(str[2], str[3]);
-    std::cout  << s.getFileContents() << "\n";
+    if (s.setFileName(str[1]))
+        return 1;
+    if (s.setReplacingStr(str[2]))
+        return 1;
+    if (s.setInsertString(str[3]))
+        return 1;
+    if (s.replacePartContentByString())
+        return 1;
+    std::cout << s.getFileContents() << "\n";
 }

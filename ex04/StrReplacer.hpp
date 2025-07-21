@@ -5,20 +5,24 @@
 #include <fstream>
 #include <string>
 
-class StrReplacer
-{
+class StrReplacer {
 private:
+    std::string filename;
+    std::string replacingStr;
+    std::string insertStr;
     std::string fileContents;
+
 
 public:
     StrReplacer();
     ~StrReplacer();
 
-    int readFile(char *fn);
+    int setFileName(const std::string &fn);
+    int setReplacingStr(const std::string &rs);
+    int setInsertString(const std::string &is);
+
     std::string getFileContents();
-    void setFileContents(std::string fn);
-    void replacePartContentByString(std::string str, std::string insert);
-    
+    int replacePartContentByString();
 };
 
 #endif
