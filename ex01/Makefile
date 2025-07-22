@@ -1,4 +1,4 @@
-TARGET := ZombieHorde
+TARGET := zombieHorde
 CXX := c++
 STD := -std=c++98
 CFLAGS := -Wall -Wextra -Werror $(STD)

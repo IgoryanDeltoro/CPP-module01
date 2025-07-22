@@ -1,4 +1,4 @@
-TARGET = Harl 
+TARGET = harl 
 CXX = c++
 STD = -std=c++98
 CFLAGS = -Wall -Wextra -Werror $(STD)

@@ -1,4 +1,4 @@
-TARGET := StrReplacer
+TARGET := strReplacer
 CXX := c++
 STD := -std=c++98
 CFLAGS := -Wall -Wextra -Werror $(STD)

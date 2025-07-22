@@ -1,4 +1,4 @@
-TARGET := Brain
+TARGET := brain
 CXX := c++
 STD := -std=c++98
 CFLAGS := -Wall -Wextra -Werror $(STD)
