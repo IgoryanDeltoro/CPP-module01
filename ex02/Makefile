@@ -5,7 +5,8 @@ CFLAGS := -Wall -Wextra -Werror $(STD)
 RM := rm -rf 
 SRC := $(wildcard *.cpp)
 OBJ := $(SRC:%.cpp=%.o)
-all: $(OBJ)
+all: $(TARGET)
+$(TARGET): $(OBJ)
 	$(CXX) $(CFLAGS) $(OBJ) -o $(TARGET)
 %.o: %.cpp
 	$(CXX) $(CFLAGS) -c $^ -o $@
